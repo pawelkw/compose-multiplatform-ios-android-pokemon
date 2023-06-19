@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version "1.8.21"
 }
 
 kotlin {
@@ -33,6 +34,16 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation("io.ktor:ktor-client-core:2.3.1")
+                implementation("io.ktor:ktor-client-logging:2.3.1")
+                implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
+                implementation("io.insert-koin:koin-core:3.4.2")
+                implementation("io.insert-koin:koin-compose:1.0.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+                implementation("app.cash.paging:paging-compose-common:3.2.0-alpha05-0.2.2")
+                implementation("media.kamel:kamel-image:0.5.1")
+
             }
         }
         val androidMain by getting {
@@ -40,6 +51,7 @@ kotlin {
                 api("androidx.activity:activity-compose:1.6.1")
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.9.0")
+                implementation("io.ktor:ktor-client-okhttp:2.3.1")
             }
         }
         val iosX64Main by getting
@@ -50,6 +62,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:2.3.1")
+            }
         }
     }
 }
