@@ -1,13 +1,13 @@
-package di
+package me.kwiecinski.kmm.compose.pokemon.di
 
-import pokemonlist.PokemonRepository
-import pokemonlist.PokemonViewModel
-import network.httpClient
+import me.kwiecinski.kmm.compose.pokemon.pokemonlist.PokemonRepository
+import me.kwiecinski.kmm.compose.pokemon.pokemonlist.PokemonViewModel
+import me.kwiecinski.kmm.compose.pokemon.network.httpClient
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import pokemonlist.PokemonPagingSource
+import me.kwiecinski.kmm.compose.pokemon.pokemonlist.PokemonPagingSource
 
 fun appModule() = module {
     singleOf(::PokemonRepository) { bind<PokemonRepository>() }

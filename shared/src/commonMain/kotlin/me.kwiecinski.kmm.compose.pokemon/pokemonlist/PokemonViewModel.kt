@@ -1,9 +1,8 @@
-package pokemonlist
+package me.kwiecinski.kmm.compose.pokemon.pokemonlist
 
 import app.cash.paging.Pager
 import app.cash.paging.PagingConfig
-import di.DispatchersProvider
-import io.ktor.client.HttpClient
+import me.kwiecinski.kmm.compose.pokemon.di.DispatchersProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,8 +11,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import model.Pokemon
-import model.PokemonDetails
+import me.kwiecinski.kmm.compose.pokemon.model.Pokemon
+import me.kwiecinski.kmm.compose.pokemon.model.PokemonDetails
 
 class PokemonViewModel(private val pokemonRepository: PokemonRepository,
                        private val pokemonPagingSource: PokemonPagingSource,

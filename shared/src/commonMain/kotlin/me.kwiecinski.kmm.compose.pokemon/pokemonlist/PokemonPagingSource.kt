@@ -1,4 +1,4 @@
-package pokemonlist
+package me.kwiecinski.kmm.compose.pokemon.pokemonlist
 
 import app.cash.paging.PagingSource
 import app.cash.paging.PagingSourceLoadParams
@@ -11,8 +11,8 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.isSuccess
-import model.AllPokemon
-import model.Pokemon
+import me.kwiecinski.kmm.compose.pokemon.model.AllPokemon
+import me.kwiecinski.kmm.compose.pokemon.model.Pokemon
 
 class PokemonPagingSource(
     private val httpClient: HttpClient

@@ -1,4 +1,4 @@
-package network
+package me.kwiecinski.kmm.compose.pokemon.network
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.darwin.Darwin

@@ -1,4 +1,4 @@
-package pokemonlist
+package me.kwiecinski.kmm.compose.pokemon.pokemonlist
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

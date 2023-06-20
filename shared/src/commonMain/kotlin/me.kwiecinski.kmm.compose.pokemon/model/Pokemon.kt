@@ -1,4 +1,4 @@
-package model
+package me.kwiecinski.kmm.compose.pokemon.model
 
 import kotlinx.serialization.Serializable
 

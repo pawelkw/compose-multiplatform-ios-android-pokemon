@@ -1,4 +1,4 @@
-package di
+package me.kwiecinski.kmm.compose.pokemon.di
 
 import org.koin.core.context.startKoin
 

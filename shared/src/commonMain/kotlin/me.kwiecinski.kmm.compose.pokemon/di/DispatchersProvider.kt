@@ -1,4 +1,4 @@
-package di
+package me.kwiecinski.kmm.compose.pokemon.di
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
