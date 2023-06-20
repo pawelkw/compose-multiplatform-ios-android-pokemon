@@ -16,14 +16,14 @@ import model.Pokemon
 import model.PokemonDetails
 
 class PokemonViewModel(private val pokemonRepository: PokemonRepository,
-                       private val httpClient: HttpClient,
+                       private val pokemonPagingSource: PokemonPagingSource,
                        dispatchersProvider: DispatchersProvider,) {
 
 
     val pager: Pager<Int, Pokemon> = run {
         val pagingConfig = PagingConfig(pageSize = 20, initialLoadSize = 20)
         Pager(pagingConfig) {
-            PokemonPagingSource(httpClient)
+            pokemonPagingSource
         }
     }
 
