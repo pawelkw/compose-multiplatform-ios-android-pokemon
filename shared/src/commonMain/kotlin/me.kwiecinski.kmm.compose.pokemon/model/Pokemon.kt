@@ -8,7 +8,13 @@ data class Pokemon(
     val name: String,
 ) {
     fun spriteUrl(): String {
-        val pokemonNumber = url.split("/").last { it.isNotBlank() }
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber}.png"
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber()}.png"
     }
+
+    fun pokemonId(): Int {
+        return pokemonNumber().toInt()
+    }
+
+    private fun pokemonNumber() = url.split("/").last { it.isNotBlank() }
+
 }

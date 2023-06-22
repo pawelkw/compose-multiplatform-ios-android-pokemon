@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("kotlin-parcelize")
     kotlin("plugin.serialization") version "1.8.21"
 }
 
@@ -22,6 +23,9 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+
+            export("com.arkivanov.decompose:decompose:2.0.0-compose-experimental-beta-01")
+            export("com.arkivanov.essenty:lifecycle:1.1.0")
         }
         extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
@@ -43,6 +47,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
                 implementation("app.cash.paging:paging-compose-common:3.2.0-alpha05-0.2.2")
                 implementation("media.kamel:kamel-image:0.5.1")
+                api("com.arkivanov.decompose:decompose:2.0.0-compose-experimental-beta-01")
+                implementation("com.arkivanov.decompose:extensions-compose-jetbrains:2.0.0-compose-experimental-beta-01")
+                api("io.github.xxfast:decompose-router:0.2.1")
 
             }
         }

@@ -1,7 +1,7 @@
 package me.kwiecinski.kmm.compose.pokemon
 
 import androidx.compose.runtime.Composable
-import me.kwiecinski.kmm.compose.pokemon.App
+import com.arkivanov.decompose.DefaultComponentContext
 
 @Composable
-fun MainView() = App()
+fun MainView() { App()}
