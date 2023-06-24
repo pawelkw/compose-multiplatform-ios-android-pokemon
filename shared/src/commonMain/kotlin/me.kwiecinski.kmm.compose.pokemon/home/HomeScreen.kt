@@ -3,6 +3,7 @@ package me.kwiecinski.kmm.compose.pokemon.home
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
+import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import io.github.xxfast.decompose.router.Router
 import io.github.xxfast.decompose.router.content.RoutedContent
@@ -22,7 +23,7 @@ fun HomeScreen() {
   ) { screen ->
     when (screen) {
       List -> PokemonList(onPokemonClicked = { pokemonId -> router.push(Details(pokemonId)) })
-      is Details -> PokemonDetail(pokemonId = screen.pokemonId)
+      is Details -> PokemonDetail(pokemonId = screen.pokemonId) { router.pop() }
     }
   }
 }
