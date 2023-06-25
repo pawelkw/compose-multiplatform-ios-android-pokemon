@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class FavouritePokemon(
-    val favouritePokemonIds: List<Int> = emptyList(),
+    val favouritePokemonIds: Set<Int> = emptySet(),
 )
