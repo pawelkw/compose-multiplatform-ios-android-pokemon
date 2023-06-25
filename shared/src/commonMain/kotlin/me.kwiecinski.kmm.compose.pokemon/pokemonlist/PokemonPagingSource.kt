@@ -19,7 +19,6 @@ class PokemonPagingSource(
 ) : PagingSource<Int, Pokemon>() {
     override suspend fun load(params: PagingSourceLoadParams<Int>): PagingSourceLoadResult<Int, Pokemon> {
         val page = params.key ?: FIRST_PAGE_INDEX
-        println("veyndan___ $page")
         val httpResponse = httpClient.get("https://pokeapi.co/api/v2/pokemon") {
             url {
                 parameters.append("offset", (params.loadSize * page).toString())

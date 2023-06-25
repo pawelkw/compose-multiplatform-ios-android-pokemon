@@ -72,7 +72,9 @@ fun PokemonList(
                     Box(modifier = Modifier.fillMaxWidth()) {
                         IconButton(
                             modifier = Modifier.align(alignment = Alignment.CenterEnd),
-                            onClick = { viewModel.onAddFavouriteClicked(item.pokemon.pokemonId()) }) {
+                            onClick = { viewModel.onAddFavouriteClicked(item.pokemon.pokemonId())
+                                lazyPagingItems.refresh()
+                            }) {
                             Icon(
                                 imageVector = if(item.isFavourite) Icons.Outlined.Favorite else Icons.Outlined.FavoriteBorder,
                                 contentDescription = "add/remove to/from favourites"

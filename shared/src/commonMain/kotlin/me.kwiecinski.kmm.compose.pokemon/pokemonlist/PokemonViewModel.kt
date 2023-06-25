@@ -4,8 +4,10 @@ import app.cash.paging.Pager
 import app.cash.paging.PagingConfig
 import app.cash.paging.PagingData
 import app.cash.paging.cachedIn
+import app.cash.paging.compose.LazyPagingItems
 import app.cash.paging.map
 import io.github.xxfast.kstore.KStore
+import io.ktor.client.HttpClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
@@ -19,12 +21,11 @@ import me.kwiecinski.kmm.compose.pokemon.navigation.ViewModel
 import me.kwiecinski.kmm.compose.pokemon.store.FavouritePokemon
 
 class PokemonViewModel(
-    private val pokemonPagingSource: PokemonPagingSource,
+    private val httpClient: HttpClient,
     private val favouritePokemonStore: KStore<FavouritePokemon>,
 ) : ViewModel() {
 
     private val viewModelScope = CoroutineScope(SupervisorJob() + coroutineContext)
-    private val triggerLocalRefreshFlow = MutableStateFlow<Boolean>(false)
 
     init {
         viewModelScope.launch {
@@ -41,14 +42,12 @@ class PokemonViewModel(
                     it.copy(favouritePokemonIds = it.favouritePokemonIds.toMutableSet() + pokemonId)
                 }
             }
-            triggerLocalRefreshFlow.tryEmit(true)
         }
     }
 
     val pagerFlow: Flow<PagingData<PokemonItemData>> = run {
         Pager<Int, Pokemon>(PagingConfig(pageSize = 20, initialLoadSize = 20)) {
-            pokemonPagingSource
-
+            PokemonPagingSource(httpClient)
         }.flow
             .map { pagingData ->
                 val favPokemonIds = favouritePokemonStore.get()!!.favouritePokemonIds
