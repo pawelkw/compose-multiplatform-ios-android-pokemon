@@ -50,6 +50,7 @@ kotlin {
                 api("com.arkivanov.decompose:decompose:2.0.0-compose-experimental-beta-01")
                 implementation("com.arkivanov.decompose:extensions-compose-jetbrains:2.0.0-compose-experimental-beta-01")
                 api("io.github.xxfast:decompose-router:0.2.1")
+                implementation("com.moriatsushi.insetsx:insetsx:0.1.0-alpha09")
 
             }
         }

@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import app.cash.paging.compose.collectAsLazyPagingItems
 import app.cash.paging.compose.itemKey
@@ -40,10 +42,10 @@ fun PokemonList(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(20.dp)
                         .clickable {
                             onPokemonClicked(item!!.pokemonId())
-                        },
+                        }
+                        .padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KamelImage(
@@ -57,7 +59,8 @@ fun PokemonList(
                     Text(
                         modifier = Modifier
                             .padding(start = 20.dp),
-                        text = "Pokemon name: ${item.name}"
+                        text = item.name.capitalize(),
+                        style = MaterialTheme.typography.h5,
                     )
                 }
 
