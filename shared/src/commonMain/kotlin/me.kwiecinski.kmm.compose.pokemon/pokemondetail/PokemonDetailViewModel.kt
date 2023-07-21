@@ -1,5 +1,7 @@
 package me.kwiecinski.kmm.compose.pokemon.pokemondetail
 
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.intl.Locale
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
@@ -39,7 +41,7 @@ class PokemonDetailViewModel(
 
             // Example of web request
             val pokemon: PokemonDetails = pokemonRepository.getPokemon(pokemonId)
-            _state.update { it.copy(name = pokemon.name) }
+            _state.update { it.copy(name = pokemon.name.capitalize(Locale.current)) }
         }
     }
 }
