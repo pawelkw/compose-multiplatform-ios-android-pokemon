@@ -2,6 +2,7 @@ package me.kwiecinski.kmm.compose.pokemon.pokemondetail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,8 +37,9 @@ fun PokemonDetail(
     remember(pokemonId) {
         viewModel.handleIntent(PokemonDetailIntent.Initial(pokemonId))
     }
+
     Scaffold(
-        modifier = modifier,
+        modifier = modifier.fillMaxWidth(),
         topBar = {
             TopAppBar(
                 title = {
@@ -54,7 +56,10 @@ fun PokemonDetail(
             )
         }
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(
+            modifier = Modifier.padding(it)
+                .padding(horizontal = 16.dp)
+        ) {
             Text(text = state.name, style = MaterialTheme.typography.headlineLarge)
 
             OutlinedButton(onClick = {}) {
