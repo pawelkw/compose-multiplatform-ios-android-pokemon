@@ -82,8 +82,7 @@ fun PokemonList(
                         KamelImage(
                             modifier = Modifier.size(80.dp),
                             resource = asyncPainterResource(
-                                data = item!!.pokemon.spriteUrl(),
-                                key = item.pokemon.url
+                                data = item!!.pokemon.spriteUrl()
                             ),
                             contentDescription = "pokemon image"
                         )

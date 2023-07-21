@@ -41,7 +41,12 @@ class PokemonDetailViewModel(
 
             // Example of web request
             val pokemon: PokemonDetails = pokemonRepository.getPokemon(pokemonId)
-            _state.update { it.copy(name = pokemon.name.capitalize(Locale.current)) }
+            _state.update { it.copy(name = pokemon.name.capitalize(Locale.current),
+                imageUrl = HIGH_RES_IMAGE_TEMPLATE_URL.replace("[POKEMON_ID]", pokemon.id.toString().padStart(3, '0'))) }
         }
+    }
+
+    companion object {
+        const val HIGH_RES_IMAGE_TEMPLATE_URL = "https://github.com/HybridShivam/Pokemon/blob/master/assets/imagesHQ/[POKEMON_ID].png?raw=true"
     }
 }
