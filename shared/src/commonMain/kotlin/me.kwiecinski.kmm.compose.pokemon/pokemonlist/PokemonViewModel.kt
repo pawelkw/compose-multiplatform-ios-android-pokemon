@@ -3,17 +3,12 @@ package me.kwiecinski.kmm.compose.pokemon.pokemonlist
 import app.cash.paging.Pager
 import app.cash.paging.PagingConfig
 import app.cash.paging.PagingData
-import app.cash.paging.cachedIn
-import app.cash.paging.compose.LazyPagingItems
 import app.cash.paging.map
 import io.github.xxfast.kstore.KStore
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import me.kwiecinski.kmm.compose.pokemon.model.Pokemon
