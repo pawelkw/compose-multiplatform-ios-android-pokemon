@@ -4,7 +4,15 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
     id("kotlin-parcelize")
-    kotlin("plugin.serialization") version "1.8.21"
+    kotlin("plugin.serialization") version "1.9.0"
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
+    id("de.jensklingenberg.ktorfit") version "1.0.0"
+}
+
+val ktorfitVersion = "1.5.0"
+
+configure<de.jensklingenberg.ktorfit.gradle.KtorfitGradleConfiguration> {
+    version = ktorfitVersion
 }
 
 kotlin {
@@ -39,10 +47,10 @@ kotlin {
                 implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
-                implementation("io.ktor:ktor-client-core:2.3.1")
-                implementation("io.ktor:ktor-client-logging:2.3.1")
-                implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
+                implementation("io.ktor:ktor-client-core:2.3.2")
+                implementation("io.ktor:ktor-client-logging:2.3.2")
+                implementation("io.ktor:ktor-client-content-negotiation:2.3.2")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.2")
                 implementation("io.insert-koin:koin-core:3.4.2")
                 implementation("io.insert-koin:koin-compose:1.0.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
@@ -54,6 +62,7 @@ kotlin {
                 implementation("com.moriatsushi.insetsx:insetsx:0.1.0-alpha09")
                 implementation("io.github.xxfast:kstore:0.6.0")
                 implementation("io.github.xxfast:kstore-file:0.6.0")
+                implementation("de.jensklingenberg.ktorfit:ktorfit-lib:$ktorfitVersion")
 
             }
         }
@@ -62,7 +71,7 @@ kotlin {
                 api("androidx.activity:activity-compose:1.6.1")
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.9.0")
-                implementation("io.ktor:ktor-client-okhttp:2.3.1")
+                implementation("io.ktor:ktor-client-okhttp:2.3.2")
             }
         }
         val iosX64Main by getting
@@ -74,7 +83,7 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
-                implementation("io.ktor:ktor-client-darwin:2.3.1")
+                implementation("io.ktor:ktor-client-darwin:2.3.2")
             }
         }
     }
@@ -99,4 +108,11 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+}
+
+dependencies {
+    add("kspCommonMainMetadata", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
+    add("kspAndroid", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
+    add("kspIosX64", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
+    add("kspIosSimulatorArm64", "de.jensklingenberg.ktorfit:ktorfit-ksp:$ktorfitVersion")
 }

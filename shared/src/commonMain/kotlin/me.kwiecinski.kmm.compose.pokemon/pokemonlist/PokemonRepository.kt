@@ -4,9 +4,10 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import me.kwiecinski.kmm.compose.pokemon.model.PokemonDetails
+import me.kwiecinski.kmm.compose.pokemon.network.PokemonApi
 
-class PokemonRepository(private val httpClient: HttpClient) {
+class PokemonRepository(private val pokemonApi: PokemonApi) {
     suspend fun getPokemon(id: Int): PokemonDetails {
-        return httpClient.get("https://pokeapi.co/api/v2/pokemon/$id").body()
+        return pokemonApi.getPokemon(id)
     }
 }
