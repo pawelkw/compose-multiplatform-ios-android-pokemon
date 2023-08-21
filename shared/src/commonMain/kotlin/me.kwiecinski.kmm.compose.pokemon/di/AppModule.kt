@@ -32,6 +32,7 @@ fun appModule() = module {
         Ktorfit.Builder()
             .httpClient(get<HttpClient>())
             .baseUrl("https://pokeapi.co/api/v2/")
+            .converterFactories()
             .build()
             .create<PokemonApi>()
     }
